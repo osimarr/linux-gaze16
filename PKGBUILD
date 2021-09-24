@@ -1,9 +1,9 @@
-# Maintainer: David Cohen <david@cohen.sh>
+# Maintainer: David Cohen <dacohen at pm dot me>
 
 pkgbase=linux-gaze16
 pkgver=5.14.7.arch1_gaze16
 _pkgver=${pkgver%_*}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${_pkgver%.*}-${_pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
@@ -19,6 +19,7 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
+  0001-Add-System76-gaze16-audio-quirk.patch
   0001-pinctrl-Export-intel_pinctrl_probe.patch
   0002-pinctrl-tigerlake-Workaround-for-old-communities-on-.patch
 )
@@ -30,6 +31,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             'f98065a286a6d2dbb0e226867a6417e344aaa44ef6eac967707e1f09671be445'
+            '2cf342072083c008aed9ed56edfd5e883633e2000ed01414ff7fb3eb7886e414'
             '18fc0ac3e9be6b2c2d6fa3421fe7ed7df372b1cc18539a089ea8bd4c41507371'
             '22199a5a9c601e42c655b4046c661b35c45bae55011a8f85e758ce1fa9754680')
 
