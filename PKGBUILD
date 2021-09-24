@@ -1,10 +1,11 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: David Cohen <david@cohen.sh>
 
-pkgbase=linux
-pkgver=5.14.7.arch1
+pkgbase=linux-gaze16
+pkgver=5.14.7.arch1_gaze16
+_pkgver=${pkgver%_*}
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver%.*}-${pkgver##*.}
+_srctag=v${_pkgver%.*}-${_pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -18,6 +19,8 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
+  0001-pinctrl-Export-intel_pinctrl_probe.patch
+  0002-pinctrl-tigerlake-Workaround-for-old-communities-on-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -26,7 +29,9 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'f98065a286a6d2dbb0e226867a6417e344aaa44ef6eac967707e1f09671be445')
+            'f98065a286a6d2dbb0e226867a6417e344aaa44ef6eac967707e1f09671be445'
+            '18fc0ac3e9be6b2c2d6fa3421fe7ed7df372b1cc18539a089ea8bd4c41507371'
+            '22199a5a9c601e42c655b4046c661b35c45bae55011a8f85e758ce1fa9754680')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
